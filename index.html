@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Exif to KML Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/maplibre-gl@3.4.0/dist/maplibre-gl.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>Exif-to-KML Converter</h1>
+      <p>
+        Drop a folder of JPG photos or choose files to extract GPS metadata,
+        generate individual KML Point files, and download them as a KMZ archive.
+      </p>
+    </header>
+
+    <main>
+      <section class="uploader">
+        <div id="drop-zone" class="drop-zone" tabindex="0" aria-label="Drag and drop JPG files here">
+          <p>Drag &amp; drop JPG files or folders here</p>
+          <p class="hint">Only images with GPS metadata will be converted.</p>
+          <button id="select-folder" type="button">Select folder</button>
+          <input
+            id="file-input"
+            type="file"
+            accept="image/jpeg"
+            multiple
+            webkitdirectory
+            directory
+            hidden
+          />
+        </div>
+        <div id="status" class="status" role="status" aria-live="polite"></div>
+        <a id="download-link" class="download-link" download="photos.kmz" hidden>Download KMZ archive</a>
+      </section>
+
+      <section class="results">
+        <h2>Processed Photos</h2>
+        <ul id="photo-list" class="photo-list"></ul>
+      </section>
+
+      <section class="map-panel">
+        <h2>Preview Map</h2>
+        <div id="map" class="map" aria-label="Map preview of photo locations"></div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/exifr@7.1.3/dist/lite.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@3.4.0/dist/maplibre-gl.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
