@@ -1,0 +1,2 @@
+# eixf2kmlpoint
+位置情報のExifが埋め込まれているJPGファイルをKMLに変換する
